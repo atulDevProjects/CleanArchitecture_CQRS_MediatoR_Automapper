@@ -1,6 +1,5 @@
 ﻿using Application.EmployeeDetails.Commands;
 using Application.EmployeeDetails.Queries;
-using CQRS_MediatoR.Models;
 using Dell.Rewards.Creditor.WebApi.Controllers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +26,7 @@ namespace CQRS_MediatoR.Controllers
         }
 
         // request param if needed
-        [HttpGet]
+        [HttpPut]
         [Route("GetDetailsById")]
         public Task<EmployeeDTO> GetDetailsById([FromQuery] EmployeeQueryById employeeQueryById)
         {
@@ -41,7 +40,7 @@ namespace CQRS_MediatoR.Controllers
             return Mediator.Send(addEmployeeDetails);
         }
 
-        [HttpPost]
+        [HttpDelete]
         [Route("DeleteEmployeeDetails")]
         public Task<string> DeleteEmployeeDetails([FromQuery] DeleteEmployeeDetails deleteEmployeeDetails)
         {
